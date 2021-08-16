@@ -18,6 +18,9 @@ class Vertex:
         # if the key exists, we'll pull up the value of that pre-existing vertex.
         # if it doesn't, then it's just 0.
 
+    def next_word(self): # this finds a random word based on weights
+        return random.choices(self.???)
+
     # Now assemble these vertices into a graph
 
 class Graph:
@@ -41,4 +44,5 @@ class Graph:
         #otherwise, you just return what's already there:
         return self.vertices[value]
 
-
+    def get_next_word(self, current_vertex): # "get the next word based on these weight mappings."
+        self.vertices[current_vertex.value].next_word()
