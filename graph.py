@@ -58,3 +58,5 @@ class Graph:
     def generate_probability_mappings(self): # this is to ge the probability mappings of every vertex
         for vertex in self.vertices.values():
             vertex.get_probability_map()  # 2:44:38 cannot understand the reasoning behind this ...
+                                            # this will initialize each vertex with the probability map (??)
+                                            # I still don't see where probability is coming into play here. 
