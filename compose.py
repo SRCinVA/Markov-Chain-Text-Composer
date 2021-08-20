@@ -18,7 +18,8 @@ get_words_from_text(text_path):
     return words
 
 def main():
-# 1.) get words from the text
+    # 1.) get words from the text
+    words = get_words_from_text('text/hp_sorcerer_stone.txt')
 # 2.) make a graph using those words
 # 3.) get the next word for x number
 # 4.) show these to the user
