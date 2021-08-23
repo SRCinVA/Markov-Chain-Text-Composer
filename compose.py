@@ -23,12 +23,27 @@ def make_graph(words):
     # (note the importation above)
     g = Graph
 
+    previous_word = None # just to have this to fill in with each pass (?)
+                        # ... because at the beginning, there is no previous word
+    
+    # for each word:
+    for word in words:
     # then, for each word in Words, we're gong to check to see if it's in the graph
+        word_vertex = g.get_vertex(word)
     # if it's not, we add it.
     # If there was a previous word (every one after the first, clearly),
     # then add an edge to the graph if the current word does not exist.
+        if previous_word:
+            previous_word.increment_edge(word_vertex)
     # if it *does* exist, then just increment the weight of the existing edge by 1.
-    # set the word to the previous word (so you can move to the next one) and iterate.
+    # set the word to the previous word (so you can access it and move to the next word) 
+    # and continue the iteration.
+        previous_word = word
+
+    g.generate_probability_mappings()
+
+    return g
+
 
 def main():
     # 1.) get words from the text
