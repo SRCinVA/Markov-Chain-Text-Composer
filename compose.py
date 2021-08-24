@@ -3,7 +3,7 @@ import graph from Graph, Vertex
 
 # Goals in this section:
 
-get_words_from_text(text_path):
+def get_words_from_text(text_path):
     with open(text_path, 'r') as f: # why is Python mad at 'open'?
         text = f.read()    
         # next, "we want to split across the white space"
@@ -39,16 +39,23 @@ def make_graph(words):
     # set the word to the previous word (so you can access it and move to the next word) 
     # and continue the iteration.
         previous_word = word
-
+    
+    # having gone through all words
+    # when finished, *then* you can generate the probability mappings:
     g.generate_probability_mappings()
-
+    # last, return the graph
     return g
 
+def compose(g, words, length=50): # note that length is defien by the user
+    composition = []   # this is a list that you add to for every new word.
+    word = g.get_vertex(random.choice(words)) # pick a random word from g
 
 def main():
     # 1.) get words from the text
     words = get_words_from_text('text/hp_sorcerer_stone.txt')
-# 2.) make a graph using those words
-# 3.) get the next word for x number
-# 4.) show these to the user
-pass
+    # 2.) make a graph using those words from def get_words_from_text
+    g = make_graph(words) 
+    # 3.) get the next word for x number of words (as defined by the user); let's make def compose()
+    
+    # 4.) show these to the user
+    pass
