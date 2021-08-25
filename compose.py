@@ -48,7 +48,15 @@ def make_graph(words):
 
 def compose(g, words, length=50): # note that length is defien by the user
     composition = []   # this is a list that you add to for every new word.
-    word = g.get_vertex(random.choice(words)) # pick a random word from g
+    word = g.get_vertex(random.choice(words)) # pick a random word from g. This starts the whole process.
+    # for n iterations (defined by the user), we'll iterate to get the next word.
+    for _ in range(length):
+        composition.append(word.value)  # ... we'll append that next word to list 'composition'
+                                        # ... and in doing so that word's value (unsure of this)
+        # after doing that, now it's:
+        word = g.get_next_word(word)                                
+        # this replaces the current 'word' variable with the next one, time after time.
+    return composition
 
 def main():
     # 1.) get words from the text
