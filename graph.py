@@ -53,7 +53,7 @@ class Graph:
         return self.vertices[value]
 
     def get_next_word(self, current_vertex): # "get the next word based on these weight mappings."
-        self.vertices[current_vertex.value].next_word()
+        return self.vertices[current_vertex.value].next_word()  # this needs to be returned out fo the function
 
     def generate_probability_mappings(self): # this is to ge the probability mappings of every vertex
         for vertex in self.vertices.values():

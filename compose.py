@@ -1,5 +1,6 @@
 import string
 import graph from Graph, Vertex
+import random
 
 # Goals in this section:
 
@@ -63,7 +64,11 @@ def main():
     words = get_words_from_text('text/hp_sorcerer_stone.txt')
     # 2.) make a graph using those words from def get_words_from_text
     g = make_graph(words) 
-    # 3.) get the next word for x number of words (as defined by the user); let's make def compose()
-    
+    # 3.) get the next word for x number of words (as defined by the user); let's make def compose() for this:
+    composition = compose(g, words, 100) # 100 overrides the original choice of 50.    
+    return ' '.join(composition) # we want to return a string (does ' ' concatenate a space to every word? Yes.)
     # 4.) show these to the user
-    pass
+
+# to run the function:
+if __name__ == '__main__':
+    print(main())
