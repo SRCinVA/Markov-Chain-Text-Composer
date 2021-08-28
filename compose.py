@@ -1,6 +1,9 @@
 import string
-import graph from Graph, Vertex
 import random
+import re # to execute the improved-upon regex logic
+import os  # so that Python can read multiple file names
+
+import graph from Graph, Vertex
 
 # Goals in this section:
 
@@ -10,6 +13,19 @@ def get_words_from_text(text_path):
         # next, "we want to split across the white space"
         # " ... and join it to other white spaces."
         # this means replacing all space "units" everywhere in the text with a single space (tough explanation on that ...)
+        
+        # to make it more logically like English:
+        # remove certain sections of text using regex:
+        
+        text = re.sub(r'\[(.+)\]', ' ', text) 
+        # she explained the reasoning behind the regex, but ... !!!
+        # "if there are one or more characters inside the brackets, 
+        # then repalce any version of that with a space in that text"
+
+
+
+
+        
         text = ' '.join(text.split())
         text = text.lower()   # easier to compare everything when it's all lower
         # because of edge cases and over all complexity (this is for intermediate learners),
@@ -19,6 +35,7 @@ def get_words_from_text(text_path):
     words = text.split() # 'words' are whatever falls out of the .split() operation.
     return words
 # now we need to make a graph using those words
+
 def make_graph(words):
     # we import the graph and the vertices from the graphpy file
     # (note the importation above)
@@ -59,9 +76,15 @@ def compose(g, words, length=50): # note that length is defien by the user
         # this replaces the current 'word' variable with the next one, time after time.
     return composition
 
-def main():
-    # 1.) get words from the text
-    words = get_words_from_text('text/hp_sorcerer_stone.txt')
+def main(artist):
+    # 1.) get words from the text, but for one song at a time:
+    # words = get_words_from_text('text/hp_sorcerer_stone.txt')
+    
+    # to optimize it for more than one song:
+    for song_file in os.listdir(f'song/{artist}'):
+    # the above will list every file in the folder with that artist name
+
+    
     # 2.) make a graph using those words from def get_words_from_text
     g = make_graph(words) 
     # 3.) get the next word for x number of words (as defined by the user); let's make def compose() for this:
