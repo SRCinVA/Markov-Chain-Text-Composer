@@ -80,11 +80,16 @@ def main(artist):
     # 1.) get words from the text, but for one song at a time:
     # words = get_words_from_text('text/hp_sorcerer_stone.txt')
     
-    # to optimize it for more than one song:
+    # to optimize main() for more than one song:
+    words = [] # an empty list: we need a place to put things.
     for song_file in os.listdir(f'song/{artist}'):
-    # the above will list every file in the folder with that artist name
+    # the above will list every file in the folder with that artist name.
+    # below, all we need to do is pass those parameters into the method, and we will get the words back:
+        print(song_file) # this will help clue us in on where it might have failed.
+        song_words = get_words_from_text(f'songs/{artist}/{song_file}')
+        words.extends(song_words) # interesting note: x.extends iterates over all elements in the argument; it doesn't just lump everything as "one."
 
-    
+
     # 2.) make a graph using those words from def get_words_from_text
     g = make_graph(words) 
     # 3.) get the next word for x number of words (as defined by the user); let's make def compose() for this:
@@ -94,4 +99,4 @@ def main(artist):
 
 # to run the function:
 if __name__ == '__main__':
-    print(main())
+    print(main(<artist>))
